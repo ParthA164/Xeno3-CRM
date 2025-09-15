@@ -1,0 +1,53 @@
+services:
+  # Backend API service
+  - type: web
+    name: xeno3-crm-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: xeno3-mongodb
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRE
+        value: 30d
+      - key: FRONTEND_URL
+        value: https://xeno3-crm.onrender.com
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: USE_GEMINI
+        value: false
+      - key: GEMINI_API_KEY
+        sync: false
+
+  # Frontend service
+  - type: web
+    name: xeno3-crm-frontend
+    env: static
+    region: oregon
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/build
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://xeno3-crm-api.onrender.com
+
+databases:
+  - name: xeno3-mongodb
+    plan: free
+    region: oregon
+    databaseName: xeno3_crm

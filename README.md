@@ -150,6 +150,30 @@ Xeno3 CRM follows a modern client-server architecture:
 
 5. Access the application at `http://localhost:3000`
 
+### Deployment on Render.com
+
+This project is configured for easy deployment on Render.com:
+
+1. Fork or push this repository to your GitHub account
+
+2. Sign up for a Render.com account at https://render.com
+
+3. Create a new "Blueprint" instance on Render and connect your GitHub repository
+
+4. Render will automatically detect the `render.yaml` configuration and create:
+   - A web service for the backend API
+   - A static site for the frontend
+   - A MongoDB database
+
+5. Add the following environment variables in the Render dashboard:
+   - `JWT_SECRET`: A secure random string for JWT token generation
+   - `OPENAI_API_KEY`: Your OpenAI API key (optional)
+   - `GEMINI_API_KEY`: Your Google Gemini API key (optional)
+
+6. Deploy your application and wait for the build to complete
+
+7. Your application will be available at the URLs provided by Render
+
 ## 🤖 AI Capabilities
 
 Xeno3 CRM leverages AI to enhance various aspects of customer relationship management:

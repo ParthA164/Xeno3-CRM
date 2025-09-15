@@ -112,6 +112,11 @@ app.use('/api/communication', communicationRoutes);
 app.use('/api/webhooks', webhookRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
+// Health check endpoint for Render.com
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'API is up and running' });
+});
+
 // Global error handler
 app.use((err, req, res, next) => {
   console.error('Global error handler:', err);

@@ -1,0 +1,24 @@
+{
+  "name": "xeno3-crm",
+  "version": "1.0.0",
+  "description": "Xeno3 CRM Platform with AI Integration",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\""
+  },
+  "keywords": [
+    "crm",
+    "ai",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "Xeno3 CRM Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
