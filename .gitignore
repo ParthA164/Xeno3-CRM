@@ -11,9 +11,10 @@ node_modules/
 .env.production.local
 
 # Build and coverage folders
-/build/
 /coverage/
 /dist/
+# We don't ignore the frontend build folder since it's needed for Render deployment
+# /build/
 
 # Logs
 logs
@@ -36,3 +37,7 @@ yarn-error.log*
 # System Files
 .DS_Store
 Thumbs.db
+
+# Explicitly include frontend build directory for Render deployment
+!frontend/build/
+!frontend/build/**/*
