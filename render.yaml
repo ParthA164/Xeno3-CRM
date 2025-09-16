@@ -37,7 +37,7 @@ services:
     region: oregon
     plan: free
     buildCommand: cd frontend && npm install --legacy-peer-deps && npm run build
-    staticPublishPath: ./frontend/build
+    staticPublishPath: frontend/build
     routes:
       - type: rewrite
         source: /*
